@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<title>Secret Letter ❤️</title>
+
+<style>
+/* ===== BODY ===== */
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:sans-serif;
+    background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+    overflow:auto; /* scroll ishlashi uchun */
+}
+
+/* ===== CARD ===== */
+.card{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    width:380px;
+    max-height:85vh;
+    overflow:auto;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+/* ===== INPUT ===== */
+input{
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    width:85%;
+}
+
+/* ===== BUTTON ===== */
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+/* ===== LETTER ===== */
+#letter{
+    display:none;
+    text-align:left;
+    font-size:15px;
+    line-height:1.7;
+    white-space:pre-wrap; /* matnni chiroyli ko'rsatadi */
+}
+
+/* ===== HEARTS ===== */
+.heart{
+    position:absolute;
+    color:#ff4d6d;
+    animation:float 6s linear infinite;
+    opacity:.7;
+}
+
+@keyframes float{
+    from{ transform:translateY(100vh); }
+    to{ transform:translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- LOCK SCREEN -->
+    <div id="lock">
+        <h2>🔒 Secret message</h2>
+        <p>Parolni kiriting 💕
+            Parol sen bilan ajralmasimizdan oldin oxirgi uchrashuvimiz
+        </p>
+        <input id="pass" type="password" placeholder="parol..." />
+        <br>
+        <button onclick="check()">Open</button>
+    </div>
+
+    <!-- LETTER -->
+    <div id="letter">
+
+❤️
+💌 Xat
+Salom, Kamola.
+Oradan ko‘p vaqtlar o‘tdi. Bu xatni bugun yozishga qaror qildim, lekin uni qachon senga jo‘natishimni bilmadim. Bilaman, seni ko‘p ranjitdim, senga nisbatan juda yomon ish qilib qo‘ydim. Vaqt o‘tgach, balki shu xatni o‘qisang, meni tushunarsan deb o‘ylayman.
+Bugun sana — 14.02.2025.
+
+Nega aynan bugun yozayotganimni o‘zim ham bilmayman. Oramiz ochilganiga deyarli bir yil bo‘ldi. Bu vaqt ichida hammasi o‘zgardi, lekin men o‘zimni haligacha kechira olmadim. Qilgan ishim uchun vijdonim qiynaladi.
+
+Bu xatni albatta senga yuboraman. Qanday ochishingni bilmayman, lekin umid qilamanki, hammasi esingdan chiqmagan bo‘ladi. Agar parolni topgan bo‘lsang, demak, hammasi hanuz yuragingda.
+
+Balki bu xatni oradan yana bir yil o‘tgach yuborarman. Nega hozir yozayotganimni bilmayman… Balki inson borida qadrlash kerakligini kech tushunganim uchundir.
+
+Yana bir yil yashaymanmi-yo‘qmi, bilmayman. Lekin vaqti kelsa, bu xatni senga albatta jo‘nataman. Hayotimda kim bo‘lishidan qat’i nazar, bu xat — sen uchun. Chunki bu so‘zlar uzr, pushaymon va minnatdorchilik sifatida yozildi.
+
+Balki kechirarsan, balki yo‘q… bilmadim. Lekin umid qilamanki, meni tushunasan.
+
+Hammasi uchun senga rahmat.
+Hurmat bilan,
+Ilhom
+14.02.2025
+
+<!-- ===================================================== -->
+
+    </div>
+
+</div>
+
+<script>
+
+/* 🔥 PAROLNI SHU YERDA O'ZGARTIR */
+const PASSWORD = "11.11.2023";
+
+
+/* ===== PAROL TEKSHIRISH ===== */
+function check(){
+    const v = document.getElementById("pass").value;
+
+    if(v === PASSWORD){
+        document.getElementById("lock").style.display="none";
+        document.getElementById("letter").style.display="block";
+        hearts();
+    } else {
+        alert("Noto‘g‘ri parol 😅");
+    }
+}
+
+
+/* ===== HEART ANIMATION ===== */
+function hearts(){
+    setInterval(()=>{
+        const h = document.createElement("div");
+        h.className="heart";
+        h.innerHTML="❤️";
+        h.style.left=Math.random()*100+"vw";
+        h.style.fontSize=(18+Math.random()*30)+"px";
+        document.body.appendChild(h);
+
+        setTimeout(()=>h.remove(),6000);
+    },400);
+}
+
+</script>
+
+</body>
+</html>
